@@ -8,7 +8,7 @@ services:
     environment:
       DATABASE_NAME: postgres
       DATABASE_USERNAME: postgres
-      DATABASE_PASSWORD: postgres
+      DATABASE_PASSWORD: password
       DATABASE_PORT: 5432
       DATABASE_HOST: db
     command:
@@ -21,8 +21,7 @@ services:
   db:
     image: postgres
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
+      POSTGRES_PASSWORD: password
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres"]
       interval: 5s
