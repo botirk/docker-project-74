@@ -26,6 +26,7 @@ jobs:
           load: true
       - 
         name: Test
+        uses: actions/checkout@v4
         run: make test
       -
         name: Build and push

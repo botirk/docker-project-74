@@ -6,7 +6,7 @@ COPY app/package*.json ./
 
 RUN apt update && apt-get install -y apt-transport-https ca-certificates sqlite3 build-essential
 
-RUN npm ci --verbose
+RUN npm ci
 
 COPY app .
 
