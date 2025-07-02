@@ -31,4 +31,4 @@ lint-fix:
 	npx eslint --fix .
 
 test:
-	NODE_ENV=test npx jest --verbose --runInBand
+	NODE_ENV=test npm test
