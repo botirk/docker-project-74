@@ -113,5 +113,12 @@ export default async (app, _options) => {
   addRoutes(app);
   addHooks(app);
 
+  process.on('SIGTERM', async () => {
+    await app.close();
+    process.exit(0);
+  });
+
   return app;
 };
+
+

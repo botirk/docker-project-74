@@ -1,14 +1,14 @@
 services:
   app:
     build:
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.production
     ports:
       - "8080:8080"
     volumes:
       - ./app:/app
       - /app/node_modules
     command:
-      make dev
+      make start
 
   caddy:
     restart: always

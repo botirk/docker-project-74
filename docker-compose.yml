@@ -1,20 +1,25 @@
 services:
   app:
-    restart: always
     build:
       context: .
       dockerfile: Dockerfile.production
     ports:
       - "8080:8080"
+    environment:
+      DATABASE_NAME: postgres
+      DATABASE_USERNAME: postgres
+      DATABASE_PASSWORD: postgres
+      DATABASE_PORT: 5432
+      DATABASE_HOST: db
     command:
       make test
     image: cirarius/docker-project-74
-    depends_on: 
-      - db
-  
+    depends_on:
+      db:
+        condition: service_healthy
+    stop_grace_period: 10s
   db:
     image: postgres
-    restart: always
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
