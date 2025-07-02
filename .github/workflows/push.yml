@@ -23,5 +23,13 @@ jobs:
         name: Build and push
         uses: docker/build-push-action@v6
         with:
+          load: true
+      - 
+        name: Test
+        run: make test
+      -
+        name: Build and push
+        uses: docker/build-push-action@v6
+        with:
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/docker-project-74:latest
