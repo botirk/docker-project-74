@@ -1,0 +1,22 @@
+FROM node:20.12
+
+WORKDIR /app
+
+COPY app/package*.json ./
+
+RUN apt update && apt-get install -y apt-transport-https ca-certificates sqlite3 build-essential
+
+RUN npm ci --verbose
+
+COPY app .
+
+RUN make test
+
+ENV NODE_ENV=production
+ENV PORT=8080
+
+RUN make build
+
+EXPOSE 8080
+
+CMD make start
