@@ -17,6 +17,4 @@ ENV PORT=8080
 
 RUN make build
 
-EXPOSE 8080
-
 CMD make start
